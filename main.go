@@ -11,7 +11,6 @@ import (
 	"massnet.org/mass/poc/pocutil"
 	"massnet.org/mass/pocec"
 	"os"
-	"strings"
 
 	strconv "strconv"
 )
@@ -97,7 +96,7 @@ func GenerateProof(directory string, pubkey string, bl int, challenge pocutil.Ha
 	fmt.Println()
 	xString := ByteArrayToString(proof.X)
 	xPrimeString := ByteArrayToString(proof.XPrime)
-	result = xString + "," + xPrimeString
+	result = xString + xPrimeString
 	return result, proof, nil
 
 }
@@ -196,10 +195,11 @@ func main() {
 						log.Fatal(err)
 					}
 
-					proofSplit := strings.Split(proofString, ",")
+					xString := proofString[:len(proofString)/2]
+					xPrimeString := proofString[len(proofString)/2:]
 
-					x := bitString(proofSplit[0]).AsByteSlice()
-					xp := bitString(proofSplit[1]).AsByteSlice()
+					x := bitString(xString).AsByteSlice()
+					xp := bitString(xPrimeString).AsByteSlice()
 					proof := &poc.Proof{X: x,
 						XPrime:    xp,
 						BitLength: bl}
