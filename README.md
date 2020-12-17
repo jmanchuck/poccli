@@ -48,9 +48,12 @@ bitlength: bitlength of the data from proof provider
 # Full example
 
 PubKey: 0372a265421441050884d204292775565b9e7d16dd574a47e64cefff0ec1829ad3
+
 Bitlength: 24
+
 Challenge: 0372a265421441050884d204292775565b9e7d16dd574a47e64cefff0ec1829ad3
-Directory: test_24bl
+
+Directory Name: test_24bl
 
 ## Initialize
 
